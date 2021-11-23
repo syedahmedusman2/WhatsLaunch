@@ -21,7 +21,7 @@ class _GoogleAdState extends State<GoogleAd> {
     super.initState();
     _bannerAd = BannerAd(
         // Change Banner Size According to Ur Need
-        size:AdSize.fluid,
+        size: AdSize.mediumRectangle,
         adUnitId: AdHelper.bannerAdUnitId,
         listener: BannerAdListener(onAdLoaded: (_) {
           setState(() {
