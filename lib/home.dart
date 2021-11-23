@@ -4,6 +4,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
+import 'package:whatsapplauncher/ad2.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -73,72 +74,75 @@ launchWhatsApp() async {
         title: Text('WhatsApp Launcher'),
         backgroundColor: Colors.green,
       ),
-      body: Column( children: [
-        Padding(
-        
-          padding: const EdgeInsets.fromLTRB(0, 45, 0,25),
-          child: SizedBox(
-            height:230,
-            width: 230,
-            child: Image(image: AssetImage('assets/whatsapplogo.png'))
-          ),
-        ),
-        Center(
-          child: Container(
-            margin: EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.all(
-                  Radius.circular(30) //                 <--- border radius here
-                  ),
+      body: SingleChildScrollView(
+        child: Column( children: [
+          Padding(
+          
+            padding: const EdgeInsets.fromLTRB(0, 45, 0,25),
+            child: SizedBox(
+              height:230,
+              width: 230,
+              child: Image(image: AssetImage('assets/whatsapplogo.png'))
             ),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 25, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CountryCodePicker(
-                    initialSelection: "PK",
-                    favorite: ["+92", "PK"],
-                    flagWidth: 25,
-                    onChanged: (value) {
-                      setState(() {
-                        countryCode = value;
-                      });
-                      print(countryCode);
-                    },
-                    // textOverflow: TextOverflow.fade,
-                    //  alignLeft: true,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    child: TextField(
-                      keyboardType: TextInputType.phone,
-                      controller: phoneController,
-                      decoration: InputDecoration(
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        hintText: 'Enter Phone Number',
+          ),
+          Center(
+            child: Container(
+              margin: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.black,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.all(
+                    Radius.circular(30) //                 <--- border radius here
+                    ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 25, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CountryCodePicker(
+                      initialSelection: "PK",
+                      favorite: ["+92", "PK"],
+                      flagWidth: 25,
+                      onChanged: (value) {
+                        setState(() {
+                          countryCode = value;
+                        });
+                        print(countryCode);
+                      },
+                      // textOverflow: TextOverflow.fade,
+                      //  alignLeft: true,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      child: TextField(
+                        keyboardType: TextInputType.phone,
+                        controller: phoneController,
+                        decoration: InputDecoration(
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          hintText: 'Enter Phone Number',
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        OutlineButton(
-          onPressed: () {
-            validateZero();
-          },
-          child: Text("Launch"),
-        )
-      ]),
+          OutlineButton(
+            onPressed: () {
+              validateZero();
+            },
+            child: Text("Launch"),
+          ),
+          GoogleAd()
+        ]),
+      ),
     );
   }
 }

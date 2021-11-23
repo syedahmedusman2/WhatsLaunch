@@ -1,6 +1,8 @@
 import 'package:country_code_picker/country_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:whatsapplauncher/ad2.dart';
+import 'package:whatsapplauncher/google_ad.dart';
 import 'package:whatsapplauncher/home.dart';
 import 'package:whatsapplauncher/splash_screen.dart';
 
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:Splash()
+      home:Home()
     );
   }
 }
