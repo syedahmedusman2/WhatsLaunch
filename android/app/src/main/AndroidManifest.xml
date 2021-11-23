@@ -1,11 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.whatsapplauncher">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="whatsapplauncher"
         android:icon="@mipmap/ic_launcher">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-1774593831171106~1475847200"/>
+            
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
